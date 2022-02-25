@@ -1,0 +1,34 @@
+1.useEffect():
+	-Thực thi ít nhất 1 lần
+	-Là 1 hàm nhận vào 2 tham số(callback và dependece)
+	-Gồm 2 thành phần side effect và clean up( là return trong useEffect)
+	-Trong lần render đầu tiên nó render jsx sau đó run useEffect và ko run cleanup, trong lần render thứ 2
+		nó chạy cleanup sau đó mới chạy side effect
+		sau đó chạy cleanup
+	-Có 3 trường hợp:
+	+Không có []: Luôn luôn dc chạy sau mỗi lần render
+	+[]: Chạy đúng 1 lần sau lần render
+	+[count]: Nếu count thay đổi thì nó mới chạy4xc
+
+2.useRef: Tạo ra 1 object ko thay đổi giữa những lần render
+3.Memozation: 
+	-Tính toán và lưu kết quả cho 1 function
+	-Khi gặp 1 funtion đã từng xử lý nó sẽ không cần xử lý lại nữa
+4.React.memo():Tương tự PureComponent trong classComponent
+	-là 1 HOC
+	-Sử dụng cho function component
+	-Không render lại component nếu props không thay đổi
+5.useCallback():
+	-Nhận vào 2 tham số(function và depedencies)
+	-Trả về function(hay callback cũ) nếu depedencies ko thay đổi
+	-Nếu depedence [] thì nó tạo ra function đúng 1 lần
+	-Những lần render sau nó sẽ xài lại funciton(callback đầu tiên)
+	
+6.useMemo():
+	-I chang useCallback nhưng thay vì trả về 1 callback thì nó trả về 1 giá trị
+	-Còn lại i chang useCallback
+
+	ví dụ:
+		Const data = useMemo(() => [{},{},{}], [])
+		
+		-Trả về giá trị data đúng 1 lần thôi
